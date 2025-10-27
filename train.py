@@ -7,7 +7,7 @@ from transformers import ViTImageProcessor, ViTModel, ViTConfig
 
 # ========== 配置 ==========
 MODEL_NAME = "google/vit-base-patch16-224"
-DATA_DIR = "/usr1/home/s125mdg53_03/ee6483/data/datasets"  # 假设 data/train/cats, data/train/dogs, data/val/...
+DATA_DIR = "/home/ian/ee6483/data"  # 假设 data/train/cats, data/train/dogs, data/val/...
 BATCH_SIZE = 16
 NUM_EPOCHS = 5
 LEARNING_RATE = 1e-4

@@ -1,0 +1,57 @@
+(6483) ian@ian-Laptop:~/ee6483$ python baseline/cifar10_cnn.py --resume checkpoints/cifar10/best_cnn_model.pt 
+Loading checkpoint from checkpoints/cifar10/best_cnn_model.pt
+Loaded new-format checkpoint. best_val_acc=0.8802
+Epoch 01/50 | train_loss=0.2939, train_acc=0.9018 | val_loss=0.3939, val_acc=0.8696 | val_f1=0.8693
+Epoch 02/50 | train_loss=0.2968, train_acc=0.8990 | val_loss=0.4077, val_acc=0.8686 | val_f1=0.8693
+Epoch 03/50 | train_loss=0.3112, train_acc=0.8944 | val_loss=0.4027, val_acc=0.8707 | val_f1=0.8706
+Epoch 04/50 | train_loss=0.3057, train_acc=0.8973 | val_loss=0.3983, val_acc=0.8693 | val_f1=0.8697
+Epoch 05/50 | train_loss=0.3065, train_acc=0.8963 | val_loss=0.4109, val_acc=0.8652 | val_f1=0.8656
+Epoch 06/50 | train_loss=0.3034, train_acc=0.8962 | val_loss=0.3980, val_acc=0.8675 | val_f1=0.8679
+Epoch 07/50 | train_loss=0.3021, train_acc=0.8971 | val_loss=0.4060, val_acc=0.8648 | val_f1=0.8651
+Epoch 08/50 | train_loss=0.3080, train_acc=0.8966 | val_loss=0.4049, val_acc=0.8677 | val_f1=0.8679
+Epoch 09/50 | train_loss=0.3065, train_acc=0.8977 | val_loss=0.4104, val_acc=0.8675 | val_f1=0.8681
+Epoch 10/50 | train_loss=0.3053, train_acc=0.8965 | val_loss=0.3906, val_acc=0.8756 | val_f1=0.8754
+Epoch 11/50 | train_loss=0.3032, train_acc=0.8971 | val_loss=0.4017, val_acc=0.8696 | val_f1=0.8694
+Epoch 12/50 | train_loss=0.3077, train_acc=0.8959 | val_loss=0.4118, val_acc=0.8661 | val_f1=0.8669
+Epoch 13/50 | train_loss=0.3015, train_acc=0.8979 | val_loss=0.4175, val_acc=0.8671 | val_f1=0.8676
+Epoch 14/50 | train_loss=0.2987, train_acc=0.8989 | val_loss=0.3909, val_acc=0.8733 | val_f1=0.8736
+Epoch 15/50 | train_loss=0.2968, train_acc=0.8987 | val_loss=0.4013, val_acc=0.8679 | val_f1=0.8685
+Epoch 16/50 | train_loss=0.2928, train_acc=0.9007 | val_loss=0.3906, val_acc=0.8708 | val_f1=0.8706
+Epoch 17/50 | train_loss=0.2927, train_acc=0.8995 | val_loss=0.3895, val_acc=0.8717 | val_f1=0.8727
+Epoch 18/50 | train_loss=0.2854, train_acc=0.9023 | val_loss=0.3849, val_acc=0.8715 | val_f1=0.8718
+Epoch 19/50 | train_loss=0.2867, train_acc=0.9025 | val_loss=0.4036, val_acc=0.8648 | val_f1=0.8658
+Epoch 20/50 | train_loss=0.2830, train_acc=0.9047 | val_loss=0.3980, val_acc=0.8736 | val_f1=0.8744
+Epoch 21/50 | train_loss=0.2822, train_acc=0.9039 | val_loss=0.3974, val_acc=0.8686 | val_f1=0.8689
+Epoch 22/50 | train_loss=0.2733, train_acc=0.9060 | val_loss=0.3937, val_acc=0.8737 | val_f1=0.8745
+Epoch 23/50 | train_loss=0.2750, train_acc=0.9066 | val_loss=0.3876, val_acc=0.8731 | val_f1=0.8737
+Epoch 24/50 | train_loss=0.2731, train_acc=0.9084 | val_loss=0.3927, val_acc=0.8714 | val_f1=0.8720
+Epoch 25/50 | train_loss=0.2663, train_acc=0.9082 | val_loss=0.3809, val_acc=0.8749 | val_f1=0.8754
+Epoch 26/50 | train_loss=0.2649, train_acc=0.9091 | val_loss=0.3785, val_acc=0.8772 | val_f1=0.8777
+Epoch 27/50 | train_loss=0.2611, train_acc=0.9104 | val_loss=0.3835, val_acc=0.8758 | val_f1=0.8762
+Epoch 28/50 | train_loss=0.2592, train_acc=0.9108 | val_loss=0.3808, val_acc=0.8752 | val_f1=0.8754
+Epoch 29/50 | train_loss=0.2569, train_acc=0.9125 | val_loss=0.3825, val_acc=0.8745 | val_f1=0.8748
+Epoch 30/50 | train_loss=0.2551, train_acc=0.9133 | val_loss=0.3790, val_acc=0.8756 | val_f1=0.8761
+Epoch 31/50 | train_loss=0.2529, train_acc=0.9135 | val_loss=0.3784, val_acc=0.8774 | val_f1=0.8776
+Epoch 32/50 | train_loss=0.2469, train_acc=0.9150 | val_loss=0.3756, val_acc=0.8792 | val_f1=0.8795
+Epoch 33/50 | train_loss=0.2452, train_acc=0.9169 | val_loss=0.3775, val_acc=0.8790 | val_f1=0.8792
+Epoch 34/50 | train_loss=0.2407, train_acc=0.9174 | val_loss=0.3748, val_acc=0.8768 | val_f1=0.8775
+Epoch 35/50 | train_loss=0.2385, train_acc=0.9199 | val_loss=0.3718, val_acc=0.8775 | val_f1=0.8782
+Epoch 36/50 | train_loss=0.2381, train_acc=0.9182 | val_loss=0.3745, val_acc=0.8774 | val_f1=0.8781
+Epoch 37/50 | train_loss=0.2377, train_acc=0.9174 | val_loss=0.3692, val_acc=0.8800 | val_f1=0.8800
+Epoch 38/50 | train_loss=0.2354, train_acc=0.9190 | val_loss=0.3693, val_acc=0.8796 | val_f1=0.8801
+Epoch 39/50 | train_loss=0.2346, train_acc=0.9189 | val_loss=0.3723, val_acc=0.8789 | val_f1=0.8793
+Epoch 40/50 | train_loss=0.2287, train_acc=0.9210 | val_loss=0.3753, val_acc=0.8804 | val_f1=0.8811
+New best model saved (val_acc=0.8804)
+Epoch 41/50 | train_loss=0.2300, train_acc=0.9208 | val_loss=0.3707, val_acc=0.8803 | val_f1=0.8810
+Epoch 42/50 | train_loss=0.2224, train_acc=0.9224 | val_loss=0.3717, val_acc=0.8799 | val_f1=0.8805
+Epoch 43/50 | train_loss=0.2255, train_acc=0.9207 | val_loss=0.3692, val_acc=0.8795 | val_f1=0.8797
+Epoch 44/50 | train_loss=0.2272, train_acc=0.9227 | val_loss=0.3701, val_acc=0.8785 | val_f1=0.8790
+Epoch 45/50 | train_loss=0.2213, train_acc=0.9234 | val_loss=0.3688, val_acc=0.8811 | val_f1=0.8815
+New best model saved (val_acc=0.8811)
+Epoch 46/50 | train_loss=0.2244, train_acc=0.9233 | val_loss=0.3674, val_acc=0.8817 | val_f1=0.8821
+New best model saved (val_acc=0.8817)
+Epoch 47/50 | train_loss=0.2206, train_acc=0.9229 | val_loss=0.3665, val_acc=0.8802 | val_f1=0.8806
+Epoch 48/50 | train_loss=0.2226, train_acc=0.9227 | val_loss=0.3694, val_acc=0.8805 | val_f1=0.8812
+Epoch 49/50 | train_loss=0.2253, train_acc=0.9238 | val_loss=0.3681, val_acc=0.8797 | val_f1=0.8802
+Epoch 50/50 | train_loss=0.2221, train_acc=0.9234 | val_loss=0.3708, val_acc=0.8791 | val_f1=0.8796
+Training completed. Best validation accuracy: 0.8817

@@ -1,0 +1,58 @@
+Epoch 01/15 | train_loss=0.1809, train_acc=0.9455 | val_loss=0.1269, val_acc=0.9592 |val_f1=0.9590
+New best model saved (val_acc=0.9592)
+Epoch 02/15 | train_loss=0.1083, train_acc=0.9650 | val_loss=0.1238, val_acc=0.9595 |val_f1=0.9595
+New best model saved (val_acc=0.9595)
+Epoch 03/15 | train_loss=0.0814, train_acc=0.9732 | val_loss=0.1144, val_acc=0.9636 |val_f1=0.9637
+New best model saved (val_acc=0.9636)
+Epoch 04/15 | train_loss=0.0646, train_acc=0.9786 | val_loss=0.1195, val_acc=0.9643 |val_f1=0.9643
+New best model saved (val_acc=0.9643)
+Epoch 05/15 | train_loss=0.0533, train_acc=0.9837 | val_loss=0.1557, val_acc=0.9583 |val_f1=0.9585
+Epoch 06/15 | train_loss=0.0388, train_acc=0.9872 | val_loss=0.1264, val_acc=0.9652 |val_f1=0.9649
+New best model saved (val_acc=0.9652)
+Epoch 07/15 | train_loss=0.0303, train_acc=0.9902 | val_loss=0.1040, val_acc=0.9705 |val_f1=0.9704
+New best model saved (val_acc=0.9705)
+Epoch 08/15 | train_loss=0.0204, train_acc=0.9933 | val_loss=0.1132, val_acc=0.9713 |val_f1=0.9713
+New best model saved (val_acc=0.9713)
+Epoch 09/15 | train_loss=0.0147, train_acc=0.9955 | val_loss=0.0895, val_acc=0.9789 |val_f1=0.9789
+New best model saved (val_acc=0.9789)
+Epoch 10/15 | train_loss=0.0097, train_acc=0.9969 | val_loss=0.0965, val_acc=0.9775 |val_f1=0.9775
+Epoch 11/15 | train_loss=0.0043, train_acc=0.9986 | val_loss=0.1146, val_acc=0.9765 |val_f1=0.9765
+Epoch 12/15 | train_loss=0.0038, train_acc=0.9990 | val_loss=0.0891, val_acc=0.9814 |val_f1=0.9814
+New best model saved (val_acc=0.9814)
+Epoch 13/15 | train_loss=0.0015, train_acc=0.9995 | val_loss=0.0964, val_acc=0.9816 |val_f1=0.9816
+New best model saved (val_acc=0.9816)
+Epoch 14/15 | train_loss=0.0010, train_acc=0.9998 | val_loss=0.1018, val_acc=0.9824 |val_f1=0.9824
+New best model saved (val_acc=0.9824)
+Epoch 15/15 | train_loss=0.0007, train_acc=0.9997 | val_loss=0.1014, val_acc=0.9821 |val_f1=0.9821
+Training completed. Best validation accuracy: 0.9824
+
+
+(6483) ian@ian-Laptop:~/ee6483$ python cifar10_vit.py --resume checkpoints/cifar10/best_vit_model.pt 
+Some weights of ViTModel were not initialized from the model checkpoint at google/vit-base-patch16-224 and are newly initialized: ['pooler.dense.bias', 'pooler.dense.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Loading checkpoint from checkpoints/cifar10/best_vit_model.pt
+Loaded old-format checkpoint (no best_val_acc info).
+Epoch 01/15 | train_loss=0.0405, train_acc=0.9882 | val_loss=0.1914, val_acc=0.9508 | val_f1=0.9507
+New best model saved (val_acc=0.9508)
+Epoch 02/15 | train_loss=0.0448, train_acc=0.9858 | val_loss=0.1193, val_acc=0.9677 | val_f1=0.9677
+New best model saved (val_acc=0.9677)
+Epoch 03/15 | train_loss=0.0406, train_acc=0.9864 | val_loss=0.1472, val_acc=0.9615 | val_f1=0.9614
+Epoch 04/15 | train_loss=0.0371, train_acc=0.9882 | val_loss=0.1313, val_acc=0.9656 | val_f1=0.9655
+Epoch 05/15 | train_loss=0.0321, train_acc=0.9900 | val_loss=0.1132, val_acc=0.9683 | val_f1=0.9683
+New best model saved (val_acc=0.9683)
+Epoch 06/15 | train_loss=0.0236, train_acc=0.9924 | val_loss=0.1238, val_acc=0.9680 | val_f1=0.9680
+Epoch 07/15 | train_loss=0.0187, train_acc=0.9937 | val_loss=0.1479, val_acc=0.9666 | val_f1=0.9665
+Epoch 08/15 | train_loss=0.0137, train_acc=0.9960 | val_loss=0.1358, val_acc=0.9674 | val_f1=0.9672
+Epoch 09/15 | train_loss=0.0097, train_acc=0.9969 | val_loss=0.1059, val_acc=0.9740 | val_f1=0.9740
+New best model saved (val_acc=0.9740)
+Epoch 10/15 | train_loss=0.0067, train_acc=0.9980 | val_loss=0.1210, val_acc=0.9729 | val_f1=0.9728
+Epoch 11/15 | train_loss=0.0042, train_acc=0.9985 | val_loss=0.1330, val_acc=0.9757 | val_f1=0.9757
+New best model saved (val_acc=0.9757)
+Epoch 12/15 | train_loss=0.0027, train_acc=0.9992 | val_loss=0.1131, val_acc=0.9773 | val_f1=0.9773
+New best model saved (val_acc=0.9773)
+Epoch 13/15 | train_loss=0.0017, train_acc=0.9995 | val_loss=0.1251, val_acc=0.9763 | val_f1=0.9763
+Epoch 14/15 | train_loss=0.0014, train_acc=0.9997 | val_loss=0.1144, val_acc=0.9786 | val_f1=0.9786
+New best model saved (val_acc=0.9786)
+Epoch 15/15 | train_loss=0.0008, train_acc=0.9998 | val_loss=0.1135, val_acc=0.9793 | val_f1=0.9793
+New best model saved (val_acc=0.9793)
+Training completed. Best validation accuracy: 0.9793

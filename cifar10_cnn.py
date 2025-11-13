@@ -8,17 +8,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import f1_score
 
-# ========== 配置 ==========
 DATA_DIR = "/home/ian/ee6483/data"
 BATCH_SIZE = 64
 LEARNING_RATE = 1e-3
 NUM_EPOCHS = 50
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-transform_val = None  # 全局变量供 predict_testset 使用
+transform_val = None 
 
-
-# ========== 模型 ==========
 class SimpleCNN(nn.Module):
     def __init__(self, num_classes=10):
         super().__init__()
@@ -54,8 +51,6 @@ class SimpleCNN(nn.Module):
         x = self.classifier(x)
         return x
 
-
-# ========== 训练与验证 ==========
 def train_one_epoch(model, dataloader, optimizer, criterion):
     model.train()
     total_loss, correct, total = 0.0, 0, 0
@@ -100,7 +95,6 @@ def evaluate(model, dataloader, criterion):
 
 
 def predict_testset(model, device=DEVICE):
-    """预测测试集并生成 submission.csv"""
     global transform_val
 
     test_ds = datasets.CIFAR10(
@@ -122,8 +116,6 @@ def predict_testset(model, device=DEVICE):
     df.to_csv("results/submission_cnn.csv", index=False)
     print("submission_cnn.csv saved to results/")
 
-
-# ========== 主函数 ==========
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--resume", type=str, default=None, help="Path to checkpoint file (.pt)")
@@ -152,26 +144,22 @@ def main():
     optimizer = torch.optim.AdamW(model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=NUM_EPOCHS)
 
-    # ===== 加载 checkpoint =====
     best_val_acc = 0.0
     if args.resume and os.path.isfile(args.resume):
         print(f"Loading checkpoint from {args.resume}")
         checkpoint = torch.load(args.resume, map_location=DEVICE)
 
-        # 新格式（dict中包含 model_state_dict）
         if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
             model.load_state_dict(checkpoint["model_state_dict"])
             best_val_acc = checkpoint.get("best_val_acc", 0.0)
             print(f"Loaded new-format checkpoint. best_val_acc={best_val_acc:.4f}")
         else:
-            # 旧格式：纯 state_dict
             model.load_state_dict(checkpoint)
             print("Loaded old-format checkpoint (no best_val_acc info).")
 
     elif args.resume:
         print(f"Checkpoint not found: {args.resume}")
 
-    # ===== 训练 =====
     train_losses, val_losses, train_accs, val_accs, val_f1s = [], [], [], [], []
 
     for epoch in range(1, NUM_EPOCHS + 1):
@@ -189,7 +177,6 @@ def main():
               f"train_loss={train_loss:.4f}, train_acc={train_acc:.4f} | "
               f"val_loss={val_loss:.4f}, val_acc={val_acc:.4f} | val_f1={val_f1:.4f}")
 
-        # 保存最佳模型
         if val_acc > best_val_acc:
             best_val_acc = val_acc
             os.makedirs("checkpoints/cifar10", exist_ok=True)
@@ -201,7 +188,6 @@ def main():
 
     print(f"Training completed. Best validation accuracy: {best_val_acc:.4f}")
 
-    # ===== 绘图 =====
     epochs = range(1, len(train_losses) + 1)
     plt.figure(figsize=(10, 4))
 

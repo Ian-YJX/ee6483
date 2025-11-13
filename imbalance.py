@@ -23,7 +23,6 @@ np.random.seed(42)
 
 # ================== Dataset Utils ==================
 def make_imbalanced_dataset(dataset, imbalance_ratio=0.2, imbalanced_classes=[2, 3, 5]):
-    """下采样部分类别，制造数据不平衡"""
     class_indices = defaultdict(list)
     for idx, (_, label) in enumerate(dataset):
         class_indices[label].append(idx)
@@ -138,7 +137,7 @@ def main():
     parser.add_argument("--model", choices=["cnn", "vit"], default="cnn")
     parser.add_argument("--mode", choices=["baseline", "weighted_ce", "oversample"], default="baseline")
     parser.add_argument("--epochs", type=int, default=25)
-    parser.add_argument("--imbalance", action="store_true", help="是否制造数据不平衡")
+    parser.add_argument("--imbalance", action="store_true", help="whether or not to impose imbalance issue")
     args = parser.parse_args()
 
     # ---------- Transforms ----------
@@ -173,7 +172,7 @@ def main():
     train_ds = datasets.CIFAR10(root=DATA_DIR, train=True, download=True, transform=tf_train)
     val_ds = datasets.CIFAR10(root=DATA_DIR, train=False, download=True, transform=tf_val)
     if args.imbalance:
-        train_ds = make_imbalanced_dataset(train_ds, 0.2, [2, 3, 5])
+        train_ds = make_imbalanced_dataset(train_ds, 0.05, [2, 3, 5])
 
     # ---------- Sampler / Loader ----------
     if args.mode == "oversample":
@@ -231,13 +230,20 @@ def main():
     plt.show()
 
     # ---------- Confusion Matrix ----------
+    # cm = confusion_matrix(y_true, y_pred)
+    # plt.figure(figsize=(6, 5))
+    # sns.heatmap(cm, cmap="Blues", cbar=False)
+    # plt.title(f"Confusion Matrix ({args.model}-{args.mode})")
+    # plt.xlabel("Predicted"); plt.ylabel("True")
+    # plt.savefig(f"confmat_{args.model}_{args.mode}.png")
+    # plt.show()
+    # ---------- Confusion Matrix ----------
     cm = confusion_matrix(y_true, y_pred)
-    plt.figure(figsize=(6, 5))
-    sns.heatmap(cm, cmap="Blues", cbar=False)
-    plt.title(f"Confusion Matrix ({args.model}-{args.mode})")
-    plt.xlabel("Predicted"); plt.ylabel("True")
-    plt.savefig(f"confmat_{args.model}_{args.mode}.png")
-    plt.show()
+    np.set_printoptions(linewidth=150)
+    print("\nConfusion Matrix (raw counts):")
+    print(cm)
+
+    np.savetxt(f"confmat_{args.model}_{args.mode}.csv", cm, delimiter=",", fmt="%d")
 
     print(f"Final F1 Score: {val_f1s[-1]:.4f}")
 

@@ -89,7 +89,6 @@ def evaluate(model, dataloader, criterion):
 
 
 def predict_testset(model, device=DEVICE):
-    """使用验证集同样的 transform 对 CIFAR-10 测试集做预测，生成 submission_vit.csv"""
     global transform_val
 
     test_ds = datasets.CIFAR10(
@@ -112,7 +111,6 @@ def predict_testset(model, device=DEVICE):
     print("submission_vit.csv saved to results/")
 
 
-# ========== 主函数 ==========
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -123,7 +121,6 @@ def main():
     )
     args = parser.parse_args()
 
-    # ===== 数据增强 =====
     global transform_val
     transform_train = transforms.Compose(
         [
@@ -158,7 +155,6 @@ def main():
         val_ds, batch_size=BATCH_SIZE, shuffle=False, num_workers=4
     )
 
-    # ===== 模型与优化器 =====
     model = ViTWithMLP(MODEL_NAME, num_classes=10).to(DEVICE)
     optimizer = torch.optim.AdamW(
         model.parameters(), lr=LEARNING_RATE, weight_decay=1e-4
@@ -168,32 +164,24 @@ def main():
         optimizer, T_max=NUM_EPOCHS
     )
 
-    # 可选：冻结部分 backbone 层（先微调分类头）
-    # for param in model.backbone.parameters():
-    #     param.requires_grad = False
 
-    # ===== 载入 checkpoint =====
     best_val_acc = 0.0
     if args.resume and os.path.isfile(args.resume):
         print(f"Loading checkpoint from {args.resume}")
         checkpoint = torch.load(args.resume, map_location=DEVICE)
 
-        # 新格式：包含 model_state_dict
         if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
             model.load_state_dict(checkpoint["model_state_dict"])
             best_val_acc = checkpoint.get("best_val_acc", 0.0)
             print(f"Loaded new-format checkpoint. best_val_acc={best_val_acc:.4f}")
         else:
-            # 旧格式：纯 state_dict
             model.load_state_dict(checkpoint)
             print("Loaded old-format checkpoint (no best_val_acc info).")
     elif args.resume:
         print(f"Checkpoint not found: {args.resume}")
 
-    # ===== 训练准备 =====
     train_losses, val_losses, train_accs, val_accs, val_f1s = [], [], [], [], []
 
-    # ===== 训练循环 =====
     for epoch in range(1, NUM_EPOCHS + 1):
         train_loss, train_acc = train_one_epoch(
             model, train_loader, optimizer, criterion
@@ -214,7 +202,6 @@ def main():
             f"val_f1={val_f1:.4f}"
         )
 
-        # 保存最佳模型（基于 val_acc）
         if val_acc > best_val_acc:
             best_val_acc = val_acc
             os.makedirs("checkpoints/cifar10", exist_ok=True)
@@ -229,11 +216,9 @@ def main():
 
     print(f"Training completed. Best validation accuracy: {best_val_acc:.4f}")
 
-    # ===== 绘制曲线 =====
     epochs = range(1, len(train_losses) + 1)
     plt.figure(figsize=(10, 4))
 
-    # Loss
     plt.subplot(1, 2, 1)
     plt.plot(epochs, train_losses, label="Train Loss")
     plt.plot(epochs, val_losses, label="Val Loss")
@@ -255,7 +240,6 @@ def main():
     plt.savefig("training_curves_vit.png")
     plt.show()
 
-    # ===== 测试集预测 =====
     predict_testset(model)
 
 

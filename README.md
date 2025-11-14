@@ -1,2 +1,1 @@
-# ee6407
-# ee6407
+# NTU EE6483 project dog/cat classifier
